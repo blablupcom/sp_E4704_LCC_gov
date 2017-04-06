@@ -90,7 +90,7 @@ data = []
 #### READ HTML 1.2
 import requests   #  import requests to avoid http errors
 
-html = requests.get(url, verify=False)
+html = requests.get(url)
 soup = BeautifulSoup(html.text, 'lxml')
 
 #### SCRAPE DATA
@@ -118,7 +118,7 @@ for row in data:
     valid = validate(filename, file_url)
 
     if valid == True:
-        scraperwiki.sqlite.save(unique_keys=['f'], data={"l": file_url, "f": filename, "d": todays_date })
+        scraperwiki.sqlite.save(unique_keys=['l'], data={"l": file_url, "f": filename, "d": todays_date })
         print filename
     else:
         errors += 1
